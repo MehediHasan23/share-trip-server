@@ -70,10 +70,10 @@ async function run() {
     // Add service api
     app.post('/packages', async(req, res) =>{
       const service = req.body
-      // const result = await packageCollection.insertOne(service)
+      const result = await packageCollection.insertOne(service)
       console.log('hitting post api', service);
       // console.log(result);
-      res.send('post hitted')
+      res.send(result)
 
     })
    
