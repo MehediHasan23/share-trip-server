@@ -59,6 +59,20 @@ async function run() {
       res.send(result);
     })
 
+    // confirm api :
+    app.put('/orders/:id', async (req, res) => {
+      const id = req.params.id;
+      const query = { _id: ObjectId(id) }
+      const package = {
+        $set: {
+          status: 'Confirm'
+        }
+      }
+      const result = await orderCollection.updateOne(query, package)
+      console.log(result);
+      res.json(result)
+    })
+
     //my order api
     app.get('/orders/:email', async(req, res)=>{
       const email = req.params.email
